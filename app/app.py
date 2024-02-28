@@ -1,4 +1,4 @@
-import config
+
 import flask
 from flask import Flask, request, render_template
 import json
@@ -37,6 +37,7 @@ def index():
 def predict():
 
     sentence = request.json['sentence']
+
     if sentence != '':
         positive = sentence_pair_prediction(nltk.sent_tokenize(sentence))
         print(nltk.sent_tokenize(sentence))
@@ -63,8 +64,8 @@ if __name__ == '__main__':
     # MODEL.load_state_dict(torch.load(config.MODEL_PATH, map_location=DEVICE))
     # MODEL.to(DEVICE)
     # MODEL.eval()
-    MODEL = ClassificationModel(
-        "bert", 'C:\\Users\\USER\\PycharmProjects\\pythonProject_practice\\best_model',
-        use_cuda=False
-    )
+    # MODEL = ClassificationModel(
+    #     "bert", 'C:\\Users\\USER\\PycharmProjects\\pythonProject_practice\\best_model',
+    #     use_cuda=False
+    # )
     app.run(debug=True, use_reloader=True)
