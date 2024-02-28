@@ -13,7 +13,7 @@ jQuery(document).ready(function () {
         fr.readAsText(value)
         fr.onload = () => {
             let val = fr.result
-            alert(val)
+            
 
             req = $.ajax({
                 url: '/predict',
