@@ -12,63 +12,101 @@
     <link href="{{ url_for('static', filename='css/app.css') }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Open+Sans:300|Oxygen|Material+Icons"
-        rel="stylesheet">
+          rel="stylesheet">
 </head>
 
 
 <body>
-    <h2> Deep Learning in Action </h2>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-1"></div>
+<h2> Deep Learning in Action </h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1"></div>
 
-            <div class="col-sm-10">
-                <center>
-                    <h3> Sentiment Analysis about a review or comment</h3>
-                    <p> <b>Model</b>: bert_base_uncased - <b>Dataset</b>: imdb reviews - <b>Train accuracy</b>: 99% -
-                        <b>Test accuracy</b>: 93% </p>
-                </center>
-                <div class="overlay">
-                    <div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>
-                </div>
+        <div class="col-sm-10">
+            <center>
+                <h3> Sentiment Analysis about a review or comment</h3>
+                <p><b>Model</b>: bert_base_uncased - <b>Dataset</b>: imdb reviews - <b>Train accuracy</b>: 99% -
+                    <b>Test accuracy</b>: 93% </p>
+            </center>
+            <div class="overlay">
+                <div class="spinner-border text-primary" role="status"><span class="sr-only">Loading...</span></div>
+            </div>
 
-                <h4> Review </h4>
-                <textarea class="form-control" maxlength="256" id="txt_review"></textarea>
+            <h4> Review </h4>
+            <textarea readonly class="form-control" maxlength="256" id="txt_review"></textarea>
 
-                <h4> Results </h4>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Final Result</span>
-                            </div>
-                            <input type="text" class="form-control" id="final-score" aria-label="Default"
-                                aria-describedby="inputGroup-sizing-default">
+            <h4> Results </h4>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            {#                            <span class="input-group-text"#}
+                            {#                                  id="inputGroup-sizing-default">Mean sentence cohesion score</span>#}
+                            <table class="table table-lg">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Средняя связность по парам предложений</th>
+                                        <th scope="col">Среднее количество пар предложений с повторяющимися словоформами сущ.</th>
+                                        <th scope="col">Среднее количество пар предложений с производной лексикой</th>
+                                        <th scope="col">Среднее количество пар предложений с гипонимами</th>
+                                        <th scope="col">Среднее количество пар предложений с гиперонимами</th>
+                                        <th scope="col">Среднее количество пар предложений с анафорой*</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <th scope="row">Значение</th>
+                                    <td id="mean-score"></td>
+                                    <td id="mean-is-wordfrom-rep-in-sent-pairs"></td>
+                                    <td id="mean-is-deriv-in-sent-pairs"></td>
+                                    <td id="mean-is-hyponym-in-sent-pairs"></td>
+                                    <td id="mean-is-hypernym-in-sent_pairs"></td>
+                                    <td id="mean-is-anph-cand-in-sent-pairs"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Final Result</span>
-                            </div>
-                            <input accept=".txt" type="file"  id="uploader-file" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                        </div>
+                        {#                        <input type="text" class="form-control" id="final-score" aria-label="Default"#}
+                        {#                               aria-describedby="inputGroup-sizing-default">#}
                     </div>
 
                 </div>
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-process">Process</button>
-                    </div>
-                    <div class="col-sm-4"></div>
+            </div>
+
+            <div class="input-group mb-3">
+                <input accept=".txt" type="file" id="uploader-file" class="form-control" aria-label="Default"
+                       aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-process">Process</button>
                 </div>
+                <div class="col-sm-4"></div>
+            </div>
 
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <a href="/download_csv/">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-download">Download
+                        </button>
+                    </a>
 
+                </div>
+                <div class="col-sm-4"></div>
             </div>
 
 
-            <div class="col-sm-1"></div>
         </div>
+
+
+        <div class="col-sm-1"></div>
     </div>
+</div>
 </body>
 
 </html>
