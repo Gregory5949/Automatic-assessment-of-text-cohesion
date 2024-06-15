@@ -20,7 +20,7 @@ import nltk
 import pymorphy2
 from nltk.corpus import stopwords
 from simpletransformers.classification import ClassificationModel, ClassificationArgs
-from counter import *
+from process_sent_pairs import *
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = f'{app.root_path}/reports'
 
