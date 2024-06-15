@@ -90,7 +90,7 @@ def download_csv():
 
 if __name__ == '__main__':
     MODEL = ClassificationModel(
-        "bert", '/Users/gd/Desktop/vkr+tech_prac/VKR-Tech.Practice/models/best_model/',
+        "bert", '/best_model/',
         use_cuda=False
     )
     # models = ["ru_core_web_sm"]
