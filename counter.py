@@ -16,6 +16,13 @@ personal_pronouns = {'он', 'она', 'оно', 'они', 'его', 'ему', '
                      'им',
                      'их', 'ими', 'них', 'собой', 'себе', 'себя'}
 
+reports = []
+noun_tags = {'NN', 'NNS', 'NNP', 'NNPS'}
+SW = set(stopwords.words('russian'))
+stemmer = SnowballStemmer("russian")
+punct = list(string.punctuation)
+wn = RuWordNet()
+
 
 def count_fraction_overlap_nouns(sent_l, sent_r):
     cnt = 0
